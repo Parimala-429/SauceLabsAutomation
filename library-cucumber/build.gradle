@@ -1,0 +1,20 @@
+//apply from: 'publish.gradle'//
+apply plugin: 'java-library'
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+configurations.all {
+	// Check for snapshot updates every build
+	resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+dependencies {
+	api group: 'com.accenture.atom', name: 'library-api', version: '0.0.1', changing:true
+	api group: 'com.accenture.atom', name: 'library-selenium', version: '0.0.1', changing:true
+
+    api group: 'io.cucumber', name: 'cucumber-testng', version: '4.7.2'
+    api group: 'io.cucumber', name: 'cucumber-java8', version: '4.7.2'
+    api group: 'io.cucumber', name: 'cucumber-picocontainer', version: '4.7.2'
+}
